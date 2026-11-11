@@ -1,5 +1,8 @@
 {
   "sections": {
+    "custom_announcement_bar": {
+  "type": "announcement-bar-custom"
+},
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -69,6 +72,7 @@
     }
   },
   "order": [
+    "custom_announcement_bar",
     "image_banner",
     "featured_collection"
   ]

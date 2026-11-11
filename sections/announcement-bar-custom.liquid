@@ -1,0 +1,71 @@
+<div class="custom-announcement" style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; text-align: center; padding: 12px;">
+  
+  {% comment %} Loop through each block added by the merchant {% endcomment %}
+  {% for block in section.blocks %}
+    <div class="announcement-item" {{ block.shopify_attributes }} style="margin-bottom: 4px;">
+      <p style="margin: 0; font-weight: bold;">
+        {{ block.settings.text | upcase }}
+      </p>
+    </div>
+  {% endfor %}
+
+  {% if section.settings.show_shop_name %}
+    <small style="display: block; margin-top: 8px; opacity: 0.8;">
+      Welcome to {{ shop.name }}!
+    </small>
+  {% endif %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Custom Announcement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_shop_name",
+      "label": "Show Shop Name",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free shipping on orders over $50!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Announcement",
+      "blocks": [
+        {
+          "type": "announcement"
+        },
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
